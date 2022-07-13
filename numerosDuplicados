@@ -1,0 +1,22 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+//TODO: imprimir numeros que se repetem
+
+public class Test
+{
+	public static void Main()
+	{
+		
+		List<int> list = new List<int>() { 5, -1, 4, 5, 9, -1, 8 };
+ 
+        List<int> result = list.GroupBy(x => x)
+                        .Where(g => g.Count() > 1)
+                        .Select(x => x.Key)
+                        .ToList();
+ 
+        Console.WriteLine(String.Join(", ", result)); 
+		
+	}
+}
