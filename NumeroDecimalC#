@@ -1,0 +1,28 @@
+public Retorno ValidarIdade()
+        {
+            _retorno = new Retorno();
+            _retorno.Status = "OK";
+            _retorno.NovaMensagemUsuario = "false";
+
+            string idade = CustomVariables["@idade"];
+
+            /*if (Parameters.Count() > 0 && String.IsNullOrEmpty(Parameters[0]) && Parameters[0].Equals("decimal")) ;
+            if (Parameters.Count() <= 0 && String.IsNullOrEmpty(Parameters[0]) && Parameters[0].Equals(decimal));*/
+
+            if (Decimal.TryParse(idade, out _))
+            {
+                _retorno.NovaMensagemUsuario = "true";
+            }
+
+            else if (Int64.TryParse(idade, out _))
+            {
+                _retorno.NovaMensagemUsuario = "true";
+            }
+
+            bool isIdade = Int64.TryParse(idade, out _);
+
+            if (isIdade) _retorno.NovaMensagemUsuario = "true";
+
+            return _retorno;
+
+        }
